@@ -4,17 +4,16 @@ FROM python:2.7
 
 ADD ./requirements.txt /requirements.txt
 ADD ./manage.py /manage.py
-ADD ./settings.py /settings.py
+ADD ./bootcamp/settings.py /settings.py
 ADD ./uploaded_custom.py /uploaded_custom.py
-ADD ./urls.py /urls.py
-ADD ./wsgi.py /wsgi.py
-ADD ./demo.db /demo.db
+ADD ./bootcamp/urls.py /urls.py
+ADD ./bootcamp/wsgi.py /wsgi.py
+ADD ./bootcamp/demo.db /demo.db
 ADD ./Procfile /Procfile
-ADD ./decorators.py /decorators.py
+ADD ./bootcamp/decorators.py /decorators.py
 
 ADD ./bootcamp /bootcamp
-ADD ./hackIDE_project /hackIDE
-ADD ./processor_node /processor
+#ADD ./processor_node /processor
 
 RUN pip install cython
 RUN pip install numpy
@@ -25,6 +24,6 @@ RUN pip install Unipath
 RUN pip install callme
 RUN pip install mongoengine
 RUN pip install requests
-RUN python manage.py runserver
-EXPOSE 8000
+RUN python django-admin runserver &
+EXPOSE 8888
 
